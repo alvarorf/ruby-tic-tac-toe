@@ -92,19 +92,15 @@ class Board
   end
 
   def draw?
-    if @available_cells <= 5
-      (rows_match? == false) && (columns_match? == false) && (diagonals_match? == false) && @available_cells.zero? ? true : false
+    if @available_cells.zero?
+      (rows_match? == false) && (columns_match? == false) && (diagonals_match? == false)  ? true : false
     else
       false
     end
   end
 
   def win?
-    if @available_cells <= 5
-      (rows_match? == true) || (columns_match? == true) || (diagonals_match? == true) ? true : false
-    else
-      false
-    end
+      return (rows_match? == true) || (columns_match? == true) || (diagonals_match? == true)
   end
 end
 

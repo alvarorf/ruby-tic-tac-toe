@@ -102,4 +102,66 @@ describe Board do
     end
   end
 
+  describe "#diagonals_match?" do
+    it "After updating 3 elements in a diagonal of the board with the same token, it should return true" do
+    expect do
+      new_board = Board.new
+      new_board.update('1','O')
+      new_board.update('5','O')
+      new_board.update('9','O')
+      expect(new_board.diagonals_match?).to eq(true)
+    end
+  end
+
+  describe "#draw?" do
+    it "Should return false at the beginning, when all of the cells are empty" do
+      expect do
+        new_board = Board.new
+        expect(new_board.draw?).to eq(false)
+      end
+    end
+    it "Should return true if nobody won and there are no cells available" do
+      expect do
+        new_board = Board.new
+        new_board.update('1','O')
+        new_board.update('2','X')
+        new_board.update('3','O')
+        new_board.update('4','O')
+        new_board.update('5','X')
+        new_board.update('6','X')
+        new_board.update('7','X')
+        new_board.update('8','O')
+        new_board.update('9','X')
+        expect(new_board.draw?).to eq(true)
+      end
+    end
+  end
+
+  describe "#win?" do
+  it "Should return false at the beginning, when all of the cells are empty" do
+    expect do
+      new_board = Board.new
+      expect(new_board.win?).to eq(false)
+    end
+  end
+  it "Should return true if either a row, column or diagonal matches with the same token (X or O)" do
+    expect do
+      new_board = Board.new
+      new_board.update('1','O')
+      new_board.update('2','O')
+      new_board.update('3','O')
+      expect(new_board.win?).to eq(true)
+    end
+  end
+  it "Should return false if not all the elements in a row, column or a diagonal match with the same token (X or O)" do
+    expect do
+      new_board = Board.new
+      new_board.update('1','O')
+      new_board.update('2','X')
+      new_board.update('3','O')
+      expect(new_board.win?).to eq(false)
+    end
+  end
+  end
+end
 end
