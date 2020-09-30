@@ -4,10 +4,11 @@ require_relative '../bin/main.rb'
 describe "#game_confirmation" do
 
   it "Should capture the input and downcase it" do
-    #game_confirmation #.to receive(:gets).and_return('foo')
-    name = game_confirmation #.gets
+    allow($stdin).to receive(:gets).and_return('y')
 
-    expect(name).to eq('yes')
+    expect { main } # (Or however you run it!)
+      .to output('Do you want to play? (Y/N)')
+      .to_stdout
   end
 end
 

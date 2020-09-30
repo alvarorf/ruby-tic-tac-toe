@@ -3,11 +3,7 @@ require_relative '../lib/game_logic.rb'
 player1_name = ''
 player2_name = ''
 answer = ''
-def game_confirmation
-  puts 'Do you want to play? (Y/N)'
-  answer = gets.chomp.downcase
-  return answer
-end
+
 
 def explain_game
   puts "1. The game is played on a grid that's 3 squares by 3 squares."
@@ -105,14 +101,21 @@ def play_again(answer, player1_name, player2_name, turn)
   end
 end
 
-puts 'Welcome to our game: Tic Tac Toe'
-answer = game_confirmation
-answer = game_confirmation while (answer != 'y') && (answer != 'n')
-if answer == 'n'
-  puts 'Goodbye!'
-  return
+def main
+  puts 'Do you want to play? (Y/N)'
+  puts 'Welcome to our game: Tic Tac Toe'
+
+  answer = gets.chomp.downcase
+
+  if answer == 'n'
+    puts 'Goodbye!'
+    return
+  elsif answer == 'y'
+    new_board, player1, player2, turn = init_game
+    game_start(answer, player1, player2, turn, new_board)
+  else
+    main
+  end
 end
-if answer == 'y'
-  new_board, player1, player2, turn = init_game
-  game_start(answer, player1, player2, turn, new_board)
-end
+
+main
