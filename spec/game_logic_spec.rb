@@ -58,4 +58,48 @@ describe Board do
     end
   end
 
+  describe "#rows_match?" do
+    it "After updating 3 elements in a row in the board with the same token, it should return true" do
+      expect do
+        new_board = Board.new
+        new_board.update('1','O')
+        new_board.update('2','O')
+        new_board.update('3','O')
+        expect(new_board.rows_match?).to eq(true)
+      end
+    end
+
+    it "After updating 2 rows only in the board with the same token, it should return false" do
+      expect do
+        new_board = Board.new
+        new_board.update('1','O')
+        new_board.update('2','O')
+        new_board.update('5','O')
+        expect(new_board.rows_match?).to eq(false)
+      end
+    end
+  end
+
+  describe "#columns_match?" do
+    it "After updating 3 elements in a column of the board with the same token, it should return true" do
+      expect do
+        new_board = Board.new
+        new_board.update('1','O')
+        new_board.update('4','O')
+        new_board.update('7','O')
+        expect(new_board.columns_match?).to eq(true)
+      end
+    end
+
+    it "After updating only 2 elements in a column of the board with the same token, it should return false" do
+      expect do
+        new_board = Board.new
+        new_board.update('1','O')
+        new_board.update('4','O')
+        new_board.update('8','O')
+        expect(new_board.columns_match?).to_not eq(true)
+      end
+    end
+  end
+
 end
