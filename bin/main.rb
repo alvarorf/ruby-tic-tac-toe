@@ -4,7 +4,6 @@ player1_name = ''
 player2_name = ''
 answer = ''
 
-
 def explain_game
   puts "1. The game is played on a grid that's 3 squares by 3 squares."
   puts '2. Player 1 is X and player 2 is O.'

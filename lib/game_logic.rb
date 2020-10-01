@@ -93,14 +93,14 @@ class Board
 
   def draw?
     if @available_cells.zero?
-      (rows_match? == false) && (columns_match? == false) && (diagonals_match? == false)  ? true : false
+      (rows_match? == false) && (columns_match? == false) && (diagonals_match? == false) ? true : false
     else
       false
     end
   end
 
   def win?
-      return (rows_match? == true) || (columns_match? == true) || (diagonals_match? == true)
+    return (rows_match? == true) || (columns_match? == true) || (diagonals_match? == true)
   end
 end
 
