@@ -172,6 +172,22 @@ describe Board do
 end
 
 describe Player do
+  describe '#initialize' do
+    it "The player_movement property should be empty if we don\'t explicitly assign a player movement" do
+      expect do
+        let(:new_player) { Player.new }
+        expect(new_board.player_movement).to eq('')
+      end
+    end
+
+    it 'An instance of player should have a name property equal to the value that we pass it' do
+      expect do
+        let(:new_player) { Player.new }
+        new_player.name = 'Mike'
+        expect(new_player.name).to eq('Mike')
+      end
+    end
+  end
   describe '#sanitize_choice' do
     it 'Should return true if the argument length is equal to 1 and is a valid number between 1 and 9' do
       expect do
