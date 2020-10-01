@@ -45,8 +45,8 @@ describe Board do
   describe '#valid_cell?' do
     it 'A random cell should be empty after initializing the board' do
       expect do
-        let(:new_board) { Board.new }
-        expect(new_board.rows[2][2]).to eq('_')
+        cell = rand(1..9)
+        expect(new_board.valid_cell?(3)).to be_true
       end
     end
 
@@ -54,7 +54,7 @@ describe Board do
       expect do
         let(:new_board) { Board.new }
         new_board.update('5', 'O')
-        expect(new_board.rows[1][1]).to_not eq('_')
+        expect(new_board.valid_cell?(5)).to_not eq('_')
       end
     end
   end
